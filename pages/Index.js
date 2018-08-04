@@ -3,47 +3,24 @@ import { StyleSheet, Text, View } from 'react-native'
 import { LinearGradient } from 'expo'
 import { Ionicons } from "@expo/vector-icons";
 
-export default class Index extends Component {
-    state = {
-        month: null,
-        date: null,
-        week: null,
-        hours: null,
-        minutes: null,
-        location: 'Seoul',
-        temp: '0'
-
-    }
-    componentDidMount () {
-        const w = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-        const d = new Date()
-        setInterval( () => {
-            this.setState({
-                month: d.getMonth()+1,
-                date: d.getDate(),
-                week: (w[d.getDay()]),
-                hours: d.getHours(),
-                minutes: d.getMinutes()
-            })
-        })
-    }
-    render () {
-        return(
-            <LinearGradient colors={["#0B86E5", "#03B1DC"]} style={style.wrap}>
-                <View style={style.weatherTop}>
-                    <Text style={style.location}>{this.state.location}</Text>
-                    <Text style={style.time}>
-                        {this.state.month}월 {this.state.date}일 {this.state.week} {this.state.hours}시 {this.state.minutes}분
-                    </Text>
-                    <View style={style.weatherInfo}>
-                        <Ionicons name='ios-cloud' size={100} color='#fff'/>
-                        <Text style={style.temp}>{this.state.temp}º</Text>
-                    </View>
+const Index = ({ temp }) => {
+    return (
+        <LinearGradient colors={["#0B86E5", "#03B1DC"]} style={style.wrap}>
+            <View style={style.weatherTop}>
+                <Text style={style.location}></Text>
+                <Text style={style.time}>
+                    월 일  시 분
+                </Text>
+                <View style={style.weatherInfo}>
+                    <Ionicons name='ios-cloud' size={100} color='#fff'/>
+                    <Text style={style.temp}>00º</Text>
                 </View>
-            </LinearGradient>
-        )
-    }
+            </View>
+        </LinearGradient>
+    )
 }
+
+export default Index
 
 const style = StyleSheet.create({
   wrap: {
