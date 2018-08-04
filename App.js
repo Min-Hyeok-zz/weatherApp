@@ -43,8 +43,8 @@ export default class App extends Component {
       },
     );
   }
-  getWeather = (lat, long) => { //위치정보를 url로 보내서 날씨정보 가져온당
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&APPID=${API}`)
+  getWeather = (lat, long) => { //위치정보를 url로 보내서 현재 날씨정보 가져온당
+    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API}`)
     .then(res => res.json())
     .then(json => {
       console.log(json)

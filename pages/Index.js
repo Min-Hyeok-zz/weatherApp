@@ -43,17 +43,12 @@ const Index = ({ temp, tempMax, tempMin, name, weather, Month, Date, Day, Hours,
           </Text>
           <View style={style.weatherInfo}>
                 <MaterialCommunityIcons name={weatherCase[weather].icon} size={100} color="#fff" />
-            <Text style={style.temp}>{temp}º</Text>
           </View>
           <View>
-            <Text style={style.minMax}>
-              {tempMax}º | {tempMin}º
-            </Text>
+            <Text style={style.temp}>{temp}º</Text>
+            <Text style={style.minMax}>{tempMax}º | {tempMin}º</Text>
             <Text style={style.weatherTitle}>{weatherCase[weather].title}</Text>
           </View>
-        </View>
-        <View style={style.weatherContent}>
-
         </View>
       </LinearGradient>
 }
@@ -61,51 +56,54 @@ const Index = ({ temp, tempMax, tempMin, name, weather, Month, Date, Day, Hours,
 export default Index
 
 const style = StyleSheet.create({
-  wrap: {
-    flex: 1
-  },
-  weatherTop: {
-    flex: .4,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  location: {
-      color: '#fff',
-      fontSize: 24,
-      fontWeight: 'bold'
-  },
-  time: {
-      fontSize: 14,
-      opacity: .8,
-      color: '#fff',
-      fontWeight: 'bold',
-      marginBottom: 20
-  },
-  temp: {
-      fontSize: 42,
-      fontWeight: 'bold',
-      color: '#fff',
-      marginLeft: 10
-  },
-  weatherInfo: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between'
-  },
-  minMax: {
-      color: '#fff',
-      fontSize: 16,
-      position: 'relative',
-      right: -60,
-      top: -45
-  },
-  weatherTitle: {
-      color: '#fff',
-      fontSize: 20
-  },
-  weatherContent: {
-      flex: .6,
-      justifyContent: 'center',
-      alignItems: 'center'
-  }
+    wrap: {
+        flex: 1
+    },
+    weatherTop: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    location: {
+        color: '#fff',
+        fontSize: 24,
+        fontWeight: 'bold'
+    },
+    time: {
+        fontSize: 14,
+        opacity: .8,
+        color: '#fff',
+        fontWeight: 'bold',
+        marginBottom: 20
+    },
+    temp: {
+        fontSize: 42,
+        fontWeight: 'bold',
+        color: '#fff',
+        marginLeft: 10,
+        alignSelf: 'center'
+    },
+    weatherInfo: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    minMax: {
+        color: '#fff',
+        fontSize: 16,
+        alignSelf: 'center'
+    },
+    weatherTitle: {
+        color: '#fff',
+        fontSize: 20,
+        marginTop: 10
+    },
+    weatherContent: {
+        flex: .6,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    contentTitle: {
+        color: '#fff',
+    }
 })
