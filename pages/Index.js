@@ -1,23 +1,61 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { LinearGradient } from 'expo'
-import { Ionicons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons"
 
-const Index = ({ temp }) => {
-    return (
-        <LinearGradient colors={["#0B86E5", "#03B1DC"]} style={style.wrap}>
-            <View style={style.weatherTop}>
-                <Text style={style.location}></Text>
-                <Text style={style.time}>
-                    월 일  시 분
-                </Text>
-                <View style={style.weatherInfo}>
-                    <Ionicons name='ios-cloud' size={100} color='#fff'/>
-                    <Text style={style.temp}>00º</Text>
-                </View>
-            </View>
-        </LinearGradient>
-    )
+const weatherCase = {
+  Rain: {
+    title: "비가 옵니당",
+    icon: "weather-rainy"
+  },
+  Clear: {
+    title: "맑습니당",
+    icon: "weather-sunny"
+  },
+  Thunderstorm: {
+    title: "브링미 타노스",
+    icon: "weather-lightning"
+  },
+  Clouds: {
+    title: "구름이 있습니당",
+    icon: "weather-cloudy"
+  },
+  Snow: {
+    title: "눈이 내립니당",
+    icon: "weather-snowy"
+  },
+  Drizzle: {
+    title: "이슬비가 내립니당",
+    icon: "weather-hail"
+  },
+  Haze: {
+    title: "안개등장 짜잔",
+    icon: "weather-fog"
+  }
+}
+
+const Index = ({ temp, tempMax, tempMin, name, weather, Month, Date, Day, Hours, Minutes  }) => {
+    return <LinearGradient colors={["#2F80ED", "#56CCF2"]} style={style.wrap}>
+        <View style={style.weatherTop}>
+          <Text style={style.location}>{name}</Text>
+          <Text style={style.time}>
+            {Month}월 {Date}일 {Day} {Hours}시 {Minutes}분
+          </Text>
+          <View style={style.weatherInfo}>
+                <MaterialCommunityIcons name={weatherCase[weather].icon} size={100} color="#fff" />
+            <Text style={style.temp}>{temp}º</Text>
+          </View>
+          <View>
+            <Text style={style.minMax}>
+              {tempMax}º | {tempMin}º
+            </Text>
+            <Text style={style.weatherTitle}>{weatherCase[weather].title}</Text>
+          </View>
+        </View>
+        <View style={style.weatherContent}>
+
+        </View>
+      </LinearGradient>
 }
 
 export default Index
@@ -27,9 +65,9 @@ const style = StyleSheet.create({
     flex: 1
   },
   weatherTop: {
-    flex: .3,
+    flex: .4,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   location: {
       color: '#fff',
@@ -52,7 +90,22 @@ const style = StyleSheet.create({
   weatherInfo: {
       display: 'flex',
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'flex-start'
+      justifyContent: 'space-between'
+  },
+  minMax: {
+      color: '#fff',
+      fontSize: 16,
+      position: 'relative',
+      right: -60,
+      top: -45
+  },
+  weatherTitle: {
+      color: '#fff',
+      fontSize: 20
+  },
+  weatherContent: {
+      flex: .6,
+      justifyContent: 'center',
+      alignItems: 'center'
   }
-});
+})
